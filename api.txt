@@ -1,0 +1,27 @@
+json to go messages:
+
+name: "os.getdir"
+payload: nil
+returns the current directory path as a string
+
+name: "os.listdir"
+payload: string, path of directory
+returns contents of directory in format:
+{
+  Dir: []string
+  Files: []string
+}
+Dir = list of sub directories
+Files = list of files that can be loaded into maxsearch contained in directory
+
+name: "os.chdir"
+payload: {
+  GotoParent: bool
+  GotoPath: string
+}
+if GotoParent is true, current directory is changed to parent directory
+else current directory is changed to GotoPath, GotoPath may be only the name of the subdirectory.
+
+name: "os.gethome"
+payload: nil
+returns the home directory of the user
