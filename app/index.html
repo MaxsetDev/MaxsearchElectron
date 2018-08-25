@@ -11,10 +11,24 @@
     <script src="static/lib/astimodaler/astimodaler.js"></script>
     <script src="static/lib/astinotifier/astinotifier.js"></script>
     <script src="static/lib/chart/chart.min.js"></script>
+    <script src="static/js/index.js"></script>
+    <script src="static/js/file.js"></script>
+    <script src="static/js/util.js"></script>
 </head>
 <body>
-  <h1>YOUP</h1>
-  <script src="static/js/index.js"></script>
+  <div class="left">
+    <h3>Files</h3>
+    <p>Sort:
+      <select id="filesort" onchange="file.refreshfiledisplay();">
+        <option value="Name">Name</option>
+        <option value="Time">Time</option>
+      </select>
+    </p>
+    <ul class="filebox" id="filebox"></ul>
+    <button id="addfilebutton" onclick="file.newfile();">Add File</button>
+    <button id="adddirbutton">Add Folder</button>
+  </div>
+
   <script type="text/javascript">
       index.init();
   </script>

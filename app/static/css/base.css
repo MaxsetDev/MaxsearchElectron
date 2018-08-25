@@ -9,3 +9,10 @@ html, body {
     margin: 0;
     width: 100%;
 }
+
+.left {
+  background-color: #3f729b;
+  float: left;
+  width: 25%;
+  height: 100%;
+}
