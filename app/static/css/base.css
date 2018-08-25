@@ -16,3 +16,7 @@ html, body {
   width: 25%;
   height: 100%;
 }
+
+ul.filebox {
+  list-style: none;
+}

@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="static/css/base.css"/>
-    <link rel="stylesheet" href="static/lib/astiloader/astiloader.css">
-    <link rel="stylesheet" href="static/lib/astimodaler/astimodaler.css">
-    <link rel="stylesheet" href="static/lib/astinotifier/astinotifier.css">
-    <link rel="stylesheet" href="static/lib/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/lib/astiloader/astiloader.css"/>
+    <link rel="stylesheet" href="static/lib/astimodaler/astimodaler.css"/>
+    <link rel="stylesheet" href="static/lib/astinotifier/astinotifier.css"/>
+    <link rel="stylesheet" href="static/lib/font-awesome-4.7.0/css/font-awesome.min.css"/>
     <script src="static/lib/astiloader/astiloader.js"></script>
     <script src="static/lib/astimodaler/astimodaler.js"></script>
     <script src="static/lib/astinotifier/astinotifier.js"></script>
@@ -26,7 +26,19 @@
     </p>
     <ul class="filebox" id="filebox"></ul>
     <button id="addfilebutton" onclick="file.newfile();">Add File</button>
-    <button id="adddirbutton">Add Folder</button>
+    <button id="adddirbutton" onclick="file.newfolder();">Add Folder</button>
+    <form id="newfolder" style="display:none;">
+      <input id="newfoldername" type="text" placeholder="New Folder Name"/>
+      <br>
+      <input id="newfolderbutton" type="submit" onclick="file.createDir(event);">Create</button>
+    </form>
+    <div id="movebox" style="display:none;">
+      <h4>Move To:</h4>
+      <form id="moveoptions">
+        <div id="moveoptionsbox"></div>
+        <input type="submit" onclick="file.hidemove(event);">Cancel</button>
+      </form>
+    </div>
   </div>
 
   <script type="text/javascript">

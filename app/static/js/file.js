@@ -85,7 +85,46 @@ let file = {
       }
     });
   },
-  move: function(id) {},
+  move: function(id) {
+    asticode.loader.show()
+    file.moveid = id;
+    astilectron.sendMessage({"name": "file.getMoveOptions", "payload": id}, function(message){
+      asticode.loader.hide()
+      if (message.name === "error") {
+        asticode.notifier.error(message.payload);
+        return;
+      }
+      let optionbox = document.getElementById("moveoptionsbox");
+      util.emptyNode(optionbox);
+      for (let op of message.payload) {
+        let row = document.createElement("input")
+        row.type = "button"
+        // row.name = "dirid"
+        // row.value = op.Id;
+        row.value = op.Name;
+        row.addEventListener("click", file.movetodir.bind(true, op.Id));
+        optionbox.appendChild(row)
+      }
+      document.getElementById("movebox").style.display = "block"
+    });
+  },
+  moveid: "",
+  movetodir: function(dirid) {
+    asticode.loader.show()
+    astilectron.sendMessage({"name": "file.movedir", "payload": {"EntryId": file.moveid, "DirId": dirid}}, function(message){
+      asticode.loader.hide()
+      if (message.name === "error") {
+        asticode.notifier.error(message.payload);
+        return;
+      }
+      document.getElementById("movebox").style.display = "none"
+      file.refreshfiledisplay()
+    })
+  },
+  hidemove: function(eve) {
+    eve.preventDefault()
+    document.getElementById("movebox").style.display = "none"
+  },
   destroy: function(id) {
     astilectron.sendMessage({"name": "file.destroy", "payload": {"EntryId": id, "Rec": false}}, function(message){
       if (message.name === "error") {
@@ -126,5 +165,28 @@ let file = {
         }
       });
     });
+  },
+  newfolder: function() {
+    //reveal new folder form
+    let f = document.getElementById("newfolder")
+    if (f.style.display == "none") {
+      f.style.display = "block";
+    } else {
+      f.style.display = "none";
+    }
+  },
+  createDir: function(eve) {
+    eve.preventDefault()
+    let nname = document.getElementById("newfoldername").value
+    if (nname.length > 0){
+      astilectron.sendMessage({"name": "file.newdir", "payload": nname}, function(message){
+        if (message.name === "error") {
+          asticode.notifier.error(message.payload)
+          return;
+        }
+        file.refreshfiledisplay()
+      })
+      document.getElementById("newfolder").style.display = "none"
+    }
   }
 };
