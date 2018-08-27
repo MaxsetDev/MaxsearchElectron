@@ -15,6 +15,7 @@
     <script src="static/js/file.js"></script>
     <script src="static/js/util.js"></script>
     <script src="static/js/search.js"></script>
+    <script src="static/js/finfo.js"></script>
 </head>
 <body>
   <div class="leftpanel">
@@ -65,7 +66,35 @@
       <button id="exportsearch" onclick="search.export();" disabled>Export</button>
     </div>
   </div>
-
+  <div id="fileinfopanel" class="rightpanel" style="display:none;">
+    <div id="infometadata">
+      <input id="finfoname" type="text" placeholder="file name"/>
+      <button onclick="finfo.changeName();">Change Name</button>
+      <table id="finfotable">
+        <tr>
+          <th>Path</th>
+          <td id="finfopath"></td>
+        </tr>
+        <tr>
+          <th>Modified</th>
+          <td id="finfomodtime"></td>
+        </tr>
+        <tr>
+          <th>Uploaded</th>
+          <td id="finfoupload"></td>
+        </tr>
+      </table>
+    </div>
+    <div id="infocontrol">
+      <button id="infoprev" onclick="finfo.prev();" disabled>Prev</button>
+      <p style="display:inline;"><span id="startindx"></span> to <span id="endindx"></span> of <span id="totalindx"></span></p>
+      <button id="infonext" onclick="finfo.next();" disabled>Next</button>
+    </div>
+    <div id="infodisplay"></div>
+    <div id="infobottom">
+      <button onclick="finfo.hide();search.show();">To Search</button>
+    </div>
+  </div>
   <script type="text/javascript">
       index.init();
   </script>

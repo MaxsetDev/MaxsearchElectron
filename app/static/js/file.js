@@ -37,6 +37,12 @@ let file = {
         del.classList.add("filecontrol")
         del.addEventListener("click", file.destroy.bind(true, entry.Id, entry.Name));
 
+        let info = document.createElement("img");
+        info.alt = "?";
+        info.src = "static/img/InfoButton.png";
+        info.classList.add("filecontrol");
+        info.addEventListener("click", finfo.getInfo.bind(true, entry.Id, 0));
+
         let row = document.createElement("li");
         htmlulbox.appendChild(row);
         if (entry.Dir) {
@@ -62,6 +68,7 @@ let file = {
         row.appendChild(nametag);
         row.appendChild(move);
         row.appendChild(del);
+        row.appendChild(info);
       }
     });
   },

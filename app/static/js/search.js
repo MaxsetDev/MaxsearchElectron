@@ -22,7 +22,7 @@ let search = {
       }
       search.refreshpage()
       search.setpagelength()
-      search.getMajorTopics(10)
+      search.getMajorTopics(15)
     });
   },
   pagenum: 0,
@@ -39,10 +39,13 @@ let search = {
       }
       for (let match of message.payload) {
         let row = document.createElement("li")
-        let id = document.createElement("h3")
+        let id = document.createElement("h4")
         id.innerHTML = match.Name + " - " + match.Path
+        id.classList.add("resultheader")
+        id.addEventListener("click", finfo.getInfo.bind(true, match.Id, match.Position))
         row.appendChild(id)
         let sent = document.createElement("p")
+        sent.classList.add("resulttext")
         for (let sec of match.Text) {
           let spn = document.createElement("span")
           spn.innerHTML = sec.Text
@@ -118,5 +121,11 @@ let search = {
   startSearchother: function(word) {
     document.getElementById("searchbar").value = word
     search.startSearch(false)
+  },
+  hide: function() {
+    document.getElementById("searchpanel").style.display = "none"
+  },
+  show: function() {
+    document.getElementById("searchpanel").style.display = "flex"
   }
 }

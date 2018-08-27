@@ -128,6 +128,7 @@ img.filecontrol {
   flex: 1 1 70%;
   border: 1px solid #1b2432;
   overflow: auto;
+  background-color: #3f729b;
 }
 
 input#searchbar {
@@ -137,4 +138,41 @@ input#searchbar {
 
 span.highlight {
   background-color: #209b8f;
+}
+
+h4.resultheader {
+  text-decoration: underline;
+}
+
+h4.resultheader:hover {
+  color: #2bbbad;
+  cursor: pointer;
+}
+
+p.resulttext {
+  font-size: 1em;
+}
+
+#infometadata {
+  margin-top: 1em;
+  flex: 0 0 auto;
+}
+
+#infocontrol {
+  flex: 0 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#infodisplay {
+  flex: 1 1 70%;
+  overflow: auto;
+  border: 1px solid #1b2432;
+  background-color: #3f729b;
+  padding: 0 1em;
+}
+
+#infobottom {
+  flex: 0 0 auto;
+  margin: 1em 0;
 }
