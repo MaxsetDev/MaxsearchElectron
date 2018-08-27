@@ -14,30 +14,55 @@
     <script src="static/js/index.js"></script>
     <script src="static/js/file.js"></script>
     <script src="static/js/util.js"></script>
+    <script src="static/js/search.js"></script>
 </head>
 <body>
-  <div class="left">
-    <h3>Files</h3>
-    <p>Sort:
+  <div class="leftpanel">
+    <h3 id="fileheader">Files</h3>
+    <p id="sortoptions">Sort:
       <select id="filesort" onchange="file.refreshfiledisplay();">
         <option value="Name">Name</option>
         <option value="Time">Time</option>
       </select>
     </p>
-    <ul class="filebox" id="filebox"></ul>
-    <button id="addfilebutton" onclick="file.newfile();">Add File</button>
-    <button id="adddirbutton" onclick="file.newfolder();">Add Folder</button>
     <form id="newfolder" style="display:none;">
       <input id="newfoldername" type="text" placeholder="New Folder Name"/>
       <br>
-      <input id="newfolderbutton" type="submit" onclick="file.createDir(event);">Create</button>
+      <input id="newfolderbutton" type="submit" onclick="file.createDir(event);" value="Create"/>
+      <button onclick="event.preventDefault();file.newfolder();">Cancel</button>
     </form>
     <div id="movebox" style="display:none;">
-      <h4>Move To:</h4>
+      <h4 style="margin:0.5em 0 0;">Move <span id="movingname"></span> To:</h4>
       <form id="moveoptions">
         <div id="moveoptionsbox"></div>
-        <input type="submit" onclick="file.hidemove(event);">Cancel</button>
+        <br>
+        <input type="submit" onclick="file.hidemove(event);" value="Cancel"/>
       </form>
+    </div>
+    <ul class="filebox" id="filebox"></ul>
+    <div id="filecontrolbuttons">
+      <button id="addfilebutton" onclick="file.newfile();">Add File</button>
+      <button id="adddirbutton" onclick="file.newfolder();">Add Folder</button>
+    </div>
+  </div>
+  <div id="searchpanel" class="rightpanel">
+    <div id="searchcontrols">
+      <h2 class="title">M A X S E A R C H</h2>
+      <form id="search">
+        <input type="text" id="searchbar" placeholder="Enter Search"/>
+        <input type="submit" id="searchbutton" value="Search" onclick="search.startSearch(event);"/>
+      </form>
+    </div>
+    <div id="searchdisplay">
+      <ul class="scroll" id="resultdisplay">
+      </ul>
+      <ul class="scroll" id="majortopics">
+      </ul>
+    </div>
+    <div id="resultcontrolbox">
+      <button id="searchprev" onclick="search.prev();" disabled>Prev</button>
+      <button id="searchnext" onclick="search.next();" disabled>Next</button>
+      <button id="exportsearch" onclick="search.export();" disabled>Export</button>
     </div>
   </div>
 

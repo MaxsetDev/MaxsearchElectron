@@ -10,13 +10,131 @@ html, body {
     width: 100%;
 }
 
-.left {
+.leftpanel {
   background-color: #3f729b;
   float: left;
-  width: 25%;
+  width: 24%;
   height: 100%;
+  padding: 0 0.5em 0 0.5em;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.rightpanel {
+  float: right;
+  width: 73%;
+  margin: 0 1% 0 1%;
+  height: 100%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.scroll {
+  overflow: auto;
+}
+
+ul#resultdisplay {
+  height: 100%;
+  float: left;
+  width: 80%;
+  list-style: none;
+  padding-left: 1em;
+  margin:0;
+  overflow: auto;
+}
+
+ul#majortopics {
+  height: 100%;
+  float: right;
+  width: 20%;
+  list-style: none;
+  margin: 0;
+  overflow: auto;
+}
+
+li.alternatesearch {
+  font-size: large;
+}
+
+li.alternatesearch:hover {
+  color: #2bbbad;
+  cursor: pointer;
 }
 
 ul.filebox {
   list-style: none;
+  background-color: #2b4d69;
+  padding-left: 0.5em;
+  margin-left: 0.5em;
+  border-left: 1px solid #d9d9d9;
+}
+
+ul#filebox {
+  border: 1px solid #1b2432;
+  overflow: auto;
+  padding-left: 0;
+  margin-left: 0;
+  flex: 1 1 70%;
+}
+
+h3#fileheader {
+  flex: 0 0 auto;
+  margin-top: 0.5em;
+  margin-bottom: 0;
+}
+
+p#sortoptions {
+  flex: 0 0 auto;
+  margin-bottom: 0;
+}
+
+form#newfolder {
+  flex: 0 0 auto;
+}
+
+#movebox {
+  flex: 0 0 auto;
+}
+
+#filecontrolbuttons {
+  flex: 0 0 auto;
+  margin-bottom: 0.75em;
+}
+
+#resultcontrolbox {
+  clear: both;
+  width: 80%;
+  flex: 0 0 auto;
+  margin-top: 1em;
+  margin-bottom: 0.75em;
+}
+
+#searchcontrols {
+  flex: 0 0 auto;
+  margin-bottom: 1em;
+}
+
+button#exportsearch{
+  float: right;
+}
+
+img.filecontrol {
+  margin-left: 2px;
+}
+
+#searchdisplay {
+  flex: 1 1 70%;
+  border: 1px solid #1b2432;
+  overflow: auto;
+}
+
+input#searchbar {
+  font-size: 14px;
+  padding-left: 0.5em;
+}
+
+span.highlight {
+  background-color: #209b8f;
 }

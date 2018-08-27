@@ -25,13 +25,17 @@ let file = {
         nametag.innerHTML = entry.Name;
         nametag.classList.add("entryname");
 
-        let move = document.createElement("button");
-        move.innerHTML = "+";
-        move.addEventListener("click", file.move.bind(true, entry.Id));
+        let move = document.createElement("img");
+        move.alt = "+";
+        move.src = "static/img/AddButton.png"
+        move.classList.add("filecontrol")
+        move.addEventListener("click", file.move.bind(true, entry.Id, entry.Name));
 
-        let del = document.createElement("button");
-        del.innerHTML = "x";
-        del.addEventListener("click", file.destroy.bind(true, entry.Id));
+        let del = document.createElement("img");
+        del.alt = "x";
+        del.src = "static/img/MinusButton.png"
+        del.classList.add("filecontrol")
+        del.addEventListener("click", file.destroy.bind(true, entry.Id, entry.Name));
 
         let row = document.createElement("li");
         htmlulbox.appendChild(row);
@@ -85,9 +89,10 @@ let file = {
       }
     });
   },
-  move: function(id) {
+  move: function(id, name) {
     asticode.loader.show()
     file.moveid = id;
+    document.getElementById("movingname").innerHTML = name
     astilectron.sendMessage({"name": "file.getMoveOptions", "payload": id}, function(message){
       asticode.loader.hide()
       if (message.name === "error") {
@@ -184,6 +189,7 @@ let file = {
           asticode.notifier.error(message.payload)
           return;
         }
+        document.getElementById("newfoldername").value = ""
         file.refreshfiledisplay()
       })
       document.getElementById("newfolder").style.display = "none"
